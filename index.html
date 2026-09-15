@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QG POLICIAL // EDGERUNNER STRIKE</title>
+  <title>QG POLICIAL // EDGERUNNER MULTI-STRIKE</title>
   <style>
     :root {
       --bg-dark: #0d061c;
@@ -15,6 +15,7 @@
       --accent-lavender: #F7D9FC; /* Lavender Veil */
       --text-main: #FFFFFF;
       --text-muted: #c8a3dc;
+      --accent-green: #22c55e;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Consolas', 'Courier New', monospace, sans-serif; }
@@ -25,13 +26,11 @@
       min-height: 100vh; 
       display: flex; 
       flex-direction: column;
-      /* Efeito de linhas Cyberpunk no fundo */
       background-image: linear-gradient(rgba(37, 16, 77, 0.4) 1px, transparent 1px),
                         linear-gradient(90deg, rgba(37, 16, 77, 0.4) 1px, transparent 1px);
       background-size: 30px 30px;
     }
 
-    /* Header Cyberpunk */
     header {
       background: rgba(13, 6, 28, 0.95);
       padding: 1rem 2rem;
@@ -68,14 +67,14 @@
     .xp { color: var(--accent-cyan); text-shadow: 0 0 5px var(--accent-cyan); }
     .rank { color: var(--accent-lavender); text-transform: uppercase; font-size: 0.85rem; }
 
-    /* Navegação Estilo HUD */
     nav { 
       display: flex; 
       justify-content: center; 
-      gap: 1rem; 
+      gap: 0.5rem; 
       background: #15092b; 
       padding: 0.75rem; 
       border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
     }
     
     nav button {
@@ -83,11 +82,12 @@
       border: 1px solid var(--accent-pink);
       color: var(--text-main);
       font-weight: bold;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1rem;
       cursor: pointer;
       text-transform: uppercase;
-      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
       transition: all 0.2s;
+      font-size: 0.85rem;
     }
     
     nav button.active, nav button:hover { 
@@ -96,111 +96,62 @@
       box-shadow: 0 0 10px var(--accent-pink);
     }
 
-    /* Layout Conteúdo */
     main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* Cartões de Flashcard */
-    .flashcard-container {
-      perspective: 1000px;
-      width: 100%;
-      height: 300px;
-      margin: 2rem 0;
-      cursor: pointer;
-    }
-    
-    .flashcard {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
-    }
-    
-    .flashcard.flipped { transform: rotateY(180deg); }
-    
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      border-radius: 4px;
+    .content-box {
       background: var(--card-bg);
       border: 2px solid var(--accent-cyan);
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-      text-align: center;
-    }
-    
-    .card-back { 
-      transform: rotateY(180deg); 
-      background: #190a36; 
-      border-color: var(--accent-yellow);
-      box-shadow: 0 0 15px rgba(250, 185, 64, 0.3);
-    }
-
-    /* Botões Cyberpunk */
-    .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
-    
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      text-transform: uppercase;
-      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-      transition: transform 0.1s, box-shadow 0.2s;
-    }
-    
-    .btn:active { transform: scale(0.95); }
-    
-    .btn-easy { 
-      background: var(--accent-cyan); 
-      color: #000; 
-      box-shadow: 0 0 10px var(--accent-cyan);
-    }
-    
-    .btn-hard { 
-      background: var(--accent-pink); 
-      color: #fff; 
-      box-shadow: 0 0 10px var(--accent-pink);
-    }
-    
-    .btn-primary { 
-      background: var(--accent-yellow); 
-      color: #000; 
-      box-shadow: 0 0 10px var(--accent-yellow);
-    }
-
-    /* Inputs estilo Terminal */
-    textarea {
-      width: 100%;
-      padding: 1rem;
-      background: #090314;
-      border: 1px solid var(--accent-pink);
-      color: var(--accent-lavender);
+      padding: 1.5rem;
       border-radius: 4px;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
-    
-    textarea:focus {
-      outline: none;
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 8px var(--accent-cyan);
+
+    /* Flashcards */
+    .flashcard-container { perspective: 1000px; width: 100%; height: 260px; margin: 1.5rem 0; cursor: pointer; }
+    .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s; }
+    .flashcard.flipped { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 2rem; border-radius: 4px; background: var(--card-bg); border: 2px solid var(--accent-cyan); text-align: center;
     }
+    .card-back { transform: rotateY(180deg); background: #190a36; border-color: var(--accent-yellow); }
+
+    /* Múltipla Escolha */
+    .option-btn {
+      display: block; width: 100%; text-align: left; padding: 0.8rem 1rem; margin: 0.5rem 0;
+      background: #190a36; border: 1px solid var(--accent-pink); color: #fff; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .option-btn:hover { background: var(--card-border); }
+    .option-btn.correct { background: var(--accent-green) !important; color: #000; font-weight: bold; }
+    .option-btn.wrong { background: var(--accent-pink) !important; color: #fff; }
+
+    /* Botões Genericos */
+    .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+    .btn {
+      padding: 0.75rem 1.5rem; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;
+      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); transition: transform 0.1s;
+    }
+    .btn:active { transform: scale(0.95); }
+    .btn-easy { background: var(--accent-cyan); color: #000; box-shadow: 0 0 10px var(--accent-cyan); }
+    .btn-hard { background: var(--accent-pink); color: #fff; box-shadow: 0 0 10px var(--accent-pink); }
+    .btn-primary { background: var(--accent-yellow); color: #000; box-shadow: 0 0 10px var(--accent-yellow); }
+
+    textarea, input {
+      width: 100%; padding: 1rem; background: #090314; border: 1px solid var(--accent-pink);
+      color: var(--accent-lavender); border-radius: 4px; margin-top: 0.5rem; margin-bottom: 1rem;
+    }
+    textarea:focus { outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
   </style>
 </head>
 <body>
 
-  <!-- Barra Gamificada HUD Cyberpunk -->
   <header>
-    <h2>⚡ QG POLICIAL // AP & PF</h2>
+    <h2>⚡ QG POLICIAL // MULTI-METHOD</h2>
     <div class="user-stats">
       <div class="stat-badge streak">🔥 <span id="streak-count">0</span> DIAS</div>
       <div class="stat-badge xp">⚡ <span id="xp-count">0</span> XP</div>
@@ -208,64 +159,106 @@
     </div>
   </header>
 
-  <!-- Navegação -->
   <nav>
-    <button class="active" onclick="switchTab('flashcards')">🃏 FLASHCARDS</button>
-    <button onclick="switchTab('import')">📥 IMPORTER (NOTEBOOKLM)</button>
+    <button class="active" onclick="switchTab('resumos')">📖 RESUMOS & FEYNMAN</button>
+    <button onclick="switchTab('flashcards')">🃏 FLASHCARDS</button>
+    <button onclick="switchTab('mcq')">🎯 MÚLTIPLA ESCOLHA</button>
+    <button onclick="switchTab('discursivas')">✏️ DISCURSIVAS</button>
+    <button onclick="switchTab('import')">📥 ALIMENTAR (NOTEBOOKLM)</button>
   </nav>
 
   <main>
-    <!-- ABA: FLASHCARDS -->
-    <section id="tab-flashcards" class="tab-content active">
-      <div id="card-area">
-        <p style="text-align: center; color: var(--accent-cyan);" id="category-tag">// MATÉRIA: NENHUMA</p>
-        <div class="flashcard-container" onclick="flipCard()">
-          <div class="flashcard" id="current-card">
-            <div class="card-front">
-              <h3 id="card-question" style="color: var(--text-main);">Nenhum flashcard cadastrado ainda. Vá na aba "IMPORTER" para colar dados do NotebookLM!</h3>
-            </div>
-            <div class="card-back">
-              <p id="card-answer" style="color: var(--accent-lavender);">A resposta aparecerá aqui.</p>
-            </div>
-          </div>
+    <!-- ABA 1: RESUMOS E MÉTODO FEYNMAN -->
+    <section id="tab-resumos" class="tab-content active">
+      <div class="content-box">
+        <h3 style="color: var(--accent-yellow);" id="resumo-titulo">// TÍTULO DO ASSUNTO</h3>
+        <p style="color: var(--accent-cyan); margin-bottom: 1rem;" id="resumo-materia">Matéria: --</p>
+        <div id="resumo-texto" style="line-height: 1.6; color: var(--text-main); margin-bottom: 1.5rem;">
+          Nenhum resumo cadastrado. Vá até a aba Alimentar para enviar conteúdos do NotebookLM!
         </div>
-
-        <div class="action-btns" id="response-buttons" style="display: none;">
-          <button class="btn btn-hard" onclick="answerCard(false)">ERREI / DIFÍCIL (+5 XP)</button>
-          <button class="btn btn-easy" onclick="answerCard(true)">ACERTEI (+15 XP)</button>
-        </div>
+        
+        <h4 style="color: var(--accent-lavender); margin-top: 1rem;">🧠 Método Feynman: Explique este assunto em frases simples:</h4>
+        <textarea id="feynman-input" rows="3" placeholder="Escreva com suas palavras para fixar o aprendizado..."></textarea>
+        <button class="btn btn-easy" onclick="saveFeynman()">Concluir Explicação (+10 XP)</button>
+      </div>
+      <div class="action-btns">
+        <button class="btn btn-primary" onclick="nextResumo()">Próximo Resumo ➔</button>
       </div>
     </section>
 
-    <!-- ABA: ALIMENTAR PAINEL -->
+    <!-- ABA 2: FLASHCARDS -->
+    <section id="tab-flashcards" class="tab-content">
+      <p style="text-align: center; color: var(--accent-cyan);" id="card-tag">// MATÉRIA: --</p>
+      <div class="flashcard-container" onclick="flipCard()">
+        <div class="flashcard" id="current-card">
+          <div class="card-front"><h3 id="card-question">Nenhum flashcard disponível.</h3></div>
+          <div class="card-back"><p id="card-answer">A resposta aparecerá aqui.</p></div>
+        </div>
+      </div>
+      <div class="action-btns" id="card-btns" style="display: none;">
+        <button class="btn btn-hard" onclick="answerCard(false)">ERREI (+5 XP)</button>
+        <button class="btn btn-easy" onclick="answerCard(true)">ACERTEI (+15 XP)</button>
+      </div>
+    </section>
+
+    <!-- ABA 3: MÚLTIPLA ESCOLHA -->
+    <section id="tab-mcq" class="tab-content">
+      <div class="content-box">
+        <h3 id="mcq-question" style="color: var(--text-main); margin-bottom: 1rem;">Nenhuma questão cadastrada.</h3>
+        <div id="mcq-options"></div>
+        <div id="mcq-comment" style="display: none; margin-top: 1rem; color: var(--accent-lavender); border-top: 1px dashed var(--accent-pink); padding-top: 1rem;"></div>
+      </div>
+      <div class="action-btns">
+        <button class="btn btn-primary" onclick="nextMCQ()">Próxima Questão ➔</button>
+      </div>
+    </section>
+
+    <!-- ABA 4: QUESTÕES DISCURSIVAS -->
+    <section id="tab-discursivas" class="tab-content">
+      <div class="content-box">
+        <h3 style="color: var(--accent-yellow);" id="disc-question">// PERGUNTA DISCURSIVA / CASO PRÁTICO</h3>
+        <textarea id="disc-user-ans" rows="5" placeholder="Digite sua resposta estruturada aqui..."></textarea>
+        <button class="btn btn-primary" onclick="toggleEspelho()">Revelar Espelho de Correção</button>
+        <div id="disc-espelho" style="display: none; margin-top: 1rem; padding: 1rem; background: #190a36; border: 1px solid var(--accent-yellow);">
+          <h4 style="color: var(--accent-yellow);">Gabarito / Fundamentação:</h4>
+          <p id="disc-answer-text" style="color: var(--text-main); margin-top: 0.5rem;"></p>
+        </div>
+      </div>
+      <div class="action-btns">
+        <button class="btn btn-easy" onclick="nextDisc()">Concluir & Próxima (+20 XP)</button>
+      </div>
+    </section>
+
+    <!-- ABA 5: ALIMENTAR PAINEL -->
     <section id="tab-import" class="tab-content">
-      <h3 style="color: var(--accent-yellow);">📥 INJETAR DADOS DO NOTEBOOKLM</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-        Cole o conteúdo gerado no formato: <code>Pergunta | Resposta | Matéria</code> (Uma por linha)
+      <h3 style="color: var(--accent-yellow);">📥 ALIMENTAR BANCO DE DADOS</h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+        Selecione o tipo de conteúdo e cole o texto gerado pelo seu NotebookLM:
       </p>
+
+      <select id="import-type" style="width: 100%; padding: 0.8rem; background: #090314; color: var(--accent-cyan); border: 1px solid var(--accent-pink); margin-bottom: 1rem;">
+        <option value="flashcards">🃏 Flashcards (Pergunta | Resposta | Matéria)</option>
+        <option value="resumos">📖 Resumos (Título | Texto Explicativo | Matéria)</option>
+        <option value="mcq">🎯 Múltipla Escolha (Pergunta | A | B | C | D | RespCorreta(A-D) | Comentário)</option>
+        <option value="disc">✏️ Discursiva (Enunciado | Espelho de Correção | Matéria)</option>
+      </select>
       
-      <textarea id="batch-input" rows="8" placeholder="O que é a Teoria da Graxa? | Conjunto de atos ilícitos tolerados para agilizar procedimentos. | Direito Penal
-Qual o prazo da Prisão Temporária em crimes hediondos? | 30 dias, prorrogável por igual período. | Processo Penal"></textarea>
-      
-      <button class="btn btn-primary" onclick="importBatch()">SALVAR NO BANCO DE DADOS</button>
+      <textarea id="batch-input" rows="8" placeholder="Cole aqui conforme o formato escolhido acima..."></textarea>
+      <button class="btn btn-primary" onclick="importData()">INJETAR DADOS</button>
     </section>
   </main>
 
   <script>
-    let userStats = JSON.parse(localStorage.getItem('police_stats')) || {
-      xp: 0,
-      streak: 1,
-      lastLogin: new Date().toDateString()
-    };
-
-    let flashcards = JSON.parse(localStorage.getItem('police_cards')) || [];
-    let currentIndex = 0;
+    let userStats = JSON.parse(localStorage.getItem('police_stats')) || { xp: 0, streak: 1 };
+    let db = JSON.parse(localStorage.getItem('police_db_multi')) || { resumos: [], flashcards: [], mcq: [], disc: [] };
+    
+    let idx = { resumos: 0, flashcards: 0, mcq: 0, disc: 0 };
 
     function getRank(xp) {
       if (xp < 100) return 'Recruta Policial';
       if (xp < 300) return 'Agente de Polícia';
-      if (xp < 600) return 'Oficial Investigador (PC-AP)';
-      if (xp < 1000) return 'Inspetor (PRF / PF)';
+      if (xp < 600) return 'Oficial Investigador';
+      if (xp < 1000) return 'Inspetor PRF/PF';
       return 'Delegado Edgerunner';
     }
 
@@ -276,75 +269,135 @@ Qual o prazo da Prisão Temporária em crimes hediondos? | 30 dias, prorrogável
       localStorage.setItem('police_stats', JSON.stringify(userStats));
     }
 
-    function flipCard() {
-      if (flashcards.length === 0) return;
-      const card = document.getElementById('current-card');
-      card.classList.toggle('flipped');
-      document.getElementById('response-buttons').style.display = card.classList.contains('flipped') ? 'flex' : 'none';
-    }
-
-    function showCard() {
-      const cardArea = document.getElementById('current-card');
-      cardArea.classList.remove('flipped');
-      document.getElementById('response-buttons').style.display = 'none';
-
-      if (flashcards.length === 0) {
-        document.getElementById('card-question').innerText = "Nenhum flashcard disponível. Alimente o sistema!";
-        document.getElementById('card-answer').innerText = "";
-        document.getElementById('category-tag').innerText = "// MATÉRIA: --";
-        return;
-      }
-
-      const item = flashcards[currentIndex];
-      document.getElementById('card-question').innerText = item.q;
-      document.getElementById('card-answer').innerText = item.a;
-      document.getElementById('category-tag').innerText = "// MATÉRIA: " + (item.tag || "Geral");
-    }
-
-    function answerCard(success) {
-      const gainedXP = success ? 15 : 5;
-      userStats.xp += gainedXP;
-      updateStatsUI();
-      currentIndex = (currentIndex + 1) % flashcards.length;
-      showCard();
-    }
-
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
-      
       document.getElementById('tab-' + tabId).classList.add('active');
       event.target.classList.add('active');
     }
 
-    function importBatch() {
-      const text = document.getElementById('batch-input').value.trim();
-      if (!text) return;
+    /* RESUMOS */
+    function loadResumo() {
+      if(db.resumos.length === 0) return;
+      let item = db.resumos[idx.resumos];
+      document.getElementById('resumo-titulo').innerText = "// " + item.t;
+      document.getElementById('resumo-materia').innerText = "Matéria: " + item.m;
+      document.getElementById('resumo-texto').innerText = item.txt;
+      document.getElementById('feynman-input').value = "";
+    }
+    function saveFeynman() {
+      if(document.getElementById('feynman-input').value.trim() !== ""){
+        userStats.xp += 10; updateStatsUI(); alert("Explicacao registrada! +10 XP");
+      }
+    }
+    function nextResumo() { if(db.resumos.length) { idx.resumos = (idx.resumos + 1) % db.resumos.length; loadResumo(); } }
 
-      const lines = text.split('\n');
+    /* FLASHCARDS */
+    function flipCard() {
+      if (!db.flashcards.length) return;
+      let card = document.getElementById('current-card');
+      card.classList.toggle('flipped');
+      document.getElementById('card-btns').style.display = card.classList.contains('flipped') ? 'flex' : 'none';
+    }
+    function loadCard() {
+      document.getElementById('current-card').classList.remove('flipped');
+      document.getElementById('card-btns').style.display = 'none';
+      if (!db.flashcards.length) return;
+      let item = db.flashcards[idx.flashcards];
+      document.getElementById('card-question').innerText = item.q;
+      document.getElementById('card-answer').innerText = item.a;
+      document.getElementById('card-tag').innerText = "// MATÉRIA: " + item.m;
+    }
+    function answerCard(win) {
+      userStats.xp += win ? 15 : 5; updateStatsUI();
+      idx.flashcards = (idx.flashcards + 1) % db.flashcards.length; loadCard();
+    }
+
+    /* MCQ */
+    function loadMCQ() {
+      if (!db.mcq.length) return;
+      let item = db.mcq[idx.mcq];
+      document.getElementById('mcq-question').innerText = item.q;
+      document.getElementById('mcq-comment').style.display = 'none';
+      let container = document.getElementById('mcq-options');
+      container.innerHTML = "";
+      ['a','b','c','d'].forEach(opt => {
+        if(item[opt]){
+          let btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.innerText = opt.toUpperCase() + ") " + item[opt];
+          btn.onclick = () => checkMCQ(opt, item.correct, item.comment, btn);
+          container.appendChild(btn);
+        }
+      });
+    }
+    function checkMCQ(chosen, correct, comment, btn) {
+      let btns = document.querySelectorAll('.option-btn');
+      btns.forEach(b => b.disabled = true);
+      if(chosen.toLowerCase() === correct.toLowerCase()){
+        btn.classList.add('correct'); userStats.xp += 20; updateStatsUI();
+      } else {
+        btn.classList.add('wrong');
+      }
+      let cBox = document.getElementById('mcq-comment');
+      cBox.innerText = "Gabarito (" + correct.toUpperCase() + "): " + comment;
+      cBox.style.display = 'block';
+    }
+    function nextMCQ() { if(db.mcq.length) { idx.mcq = (idx.mcq + 1) % db.mcq.length; loadMCQ(); } }
+
+    /* DISCURSIVAS */
+    function loadDisc() {
+      if (!db.disc.length) return;
+      let item = db.disc[idx.disc];
+      document.getElementById('disc-question').innerText = item.q;
+      document.getElementById('disc-answer-text').innerText = item.a;
+      document.getElementById('disc-espelho').style.display = 'none';
+      document.getElementById('disc-user-ans').value = "";
+    }
+    function toggleEspelho() {
+      let e = document.getElementById('disc-espelho');
+      e.style.display = e.style.display === 'none' ? 'block' : 'none';
+    }
+    function nextDisc() {
+      if(db.disc.length){
+        userStats.xp += 20; updateStatsUI();
+        idx.disc = (idx.disc + 1) % db.disc.length; loadDisc();
+      }
+    }
+
+    /* IMPORTAÇÃO */
+    function importData() {
+      let type = document.getElementById('import-type').value;
+      let text = document.getElementById('batch-input').value.trim();
+      if(!text) return;
+
+      let lines = text.split('\n');
       let count = 0;
 
       lines.forEach(line => {
-        const parts = line.split('|');
-        if (parts.length >= 2) {
-          flashcards.push({
-            q: parts[0].trim(),
-            a: parts[1].trim(),
-            tag: parts[2] ? parts[2].trim() : "Geral"
-          });
-          count++;
+        let p = line.split('|');
+        if (type === 'flashcards' && p.length >= 2) {
+          db.flashcards.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
+        } else if (type === 'resumos' && p.length >= 2) {
+          db.resumos.push({ t: p[0].trim(), txt: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
+        } else if (type === 'mcq' && p.length >= 6) {
+          db.mcq.push({ q: p[0].trim(), a: p[1].trim(), b: p[2].trim(), c: p[3].trim(), d: p[4].trim(), correct: p[5].trim(), comment: p[6]?p[6].trim():"" }); count++;
+        } else if (type === 'disc' && p.length >= 2) {
+          db.disc.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
         }
       });
 
-      localStorage.setItem('police_cards', JSON.stringify(flashcards));
+      localStorage.setItem('police_db_multi', JSON.stringify(db));
       document.getElementById('batch-input').value = '';
-      alert(`${count} Flashcards importados com sucesso!`);
-      showCard();
-      switchTab('flashcards');
+      alert(`${count} itens carregados com sucesso!`);
+      initAll();
     }
 
-    updateStatsUI();
-    showCard();
+    function initAll() {
+      updateStatsUI(); loadResumo(); loadCard(); loadMCQ(); loadDisc();
+    }
+    
+    initAll();
   </script>
 </body>
 </html>
