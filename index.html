@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QG de Estudos Policiais - AP & Geral</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --accent-gold: #fbbf24;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Header Gamificado */
+    header {
+      background: #020617;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #334155;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .user-stats { display: flex; gap: 1.5rem; align-items: center; }
+    .stat-badge {
+      background: var(--card-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid #334155;
+    }
+    .streak { color: var(--accent-gold); }
+    .xp { color: var(--accent-blue); }
+    .rank { color: var(--accent-green); text-transform: uppercase; font-size: 0.85rem; }
+
+    /* Navegação */
+    nav { display: flex; justify-content: center; gap: 1rem; background: var(--card-bg); padding: 0.75rem; }
+    nav button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    nav button.active, nav button:hover { background: #334155; color: var(--text-main); }
+
+    /* Layout Conteúdo */
+    main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Cartões de Flashcard */
+    .flashcard-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 280px;
+      margin: 2rem 0;
+      cursor: pointer;
+    }
+    .flashcard {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      border-radius: 12px;
+    }
+    .flashcard.flipped { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 2px solid #334155;
+      text-align: center;
+    }
+    .card-back { transform: rotateY(180deg); background: #111827; border-color: var(--accent-blue); }
+
+    /* Botões de Ação Gamificados */
+    .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s, filter 0.2s;
+    }
+    .btn:active { transform: scale(0.95); }
+    .btn-easy { background: var(--accent-green); color: white; }
+    .btn-hard { background: var(--accent-red); color: white; }
+    .btn-primary { background: var(--accent-blue); color: #0f172a; }
+
+    /* Formulários e Importação */
+    textarea, input, select {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: white;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Gamificada estilo Duolingo -->
+  <header>
+    <h2>🎯 QG Policial</h2>
+    <div class="user-stats">
+      <div class="stat-badge streak">🔥 <span id="streak-count">0</span> Dias</div>
+      <div class="stat-badge xp">⚡ <span id="xp-count">0</span> XP</div>
+      <div class="stat-badge rank">🛡️ <span id="user-rank">Recruta</span></div>
+    </div>
+  </header>
+
+  <!-- Abas de Navegação -->
+  <nav>
+    <button class="active" onclick="switchTab('flashcards')">🃏 Flashcards</button>
+    <button onclick="switchTab('import')">📥 Alimentar (NotebookLM)</button>
+  </nav>
+
+  <main>
+    <!-- ABA: FLASHCARDS -->
+    <section id="tab-flashcards" class="tab-content active">
+      <div id="card-area">
+        <p style="text-align: center; color: var(--text-muted);" id="category-tag">Matéria: --</p>
+        <div class="flashcard-container" onclick="flipCard()">
+          <div class="flashcard" id="current-card">
+            <div class="card-front">
+              <h3 id="card-question">Nenhum flashcard cadastrado ainda. Vá na aba "Alimentar" para adicionar contéudo do NotebookLM!</h3>
+            </div>
+            <div class="card-back">
+              <p id="card-answer">A resposta aparecerá aqui.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-btns" id="response-buttons" style="display: none;">
+          <button class="btn btn-hard" onclick="answerCard(false)">Errei / Difícil (+5 XP)</button>
+          <button class="btn btn-easy" onclick="answerCard(true)">Acertei (+15 XP)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA: ALIMENTAR PAINEL -->
+    <section id="tab-import" class="tab-content">
+      <h3>📥 Importar Conteúdo Gerado pelo NotebookLM</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+        Cole abaixo no formato: <code>Pergunta | Resposta | Matéria</code> (Uma por linha)
+      </p>
+      
+      <textarea id="batch-input" rows="8" placeholder="Exemplo:
+O que é o princípio da insignificância? | Causa supra-legal de exclusão da tipicidade material. | Direito Penal
+Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 dias, duplicável por igual período. | Legislação Especial"></textarea>
+      
+      <button class="btn btn-primary" onclick="importBatch()">Adicionar Flashcards ao Banco</button>
+    </section>
+  </main>
+
+  <script>
+    // Estado da Gamificação
+    let userStats = JSON.parse(localStorage.getItem('police_stats')) || {
+      xp: 0,
+      streak: 1,
+      lastLogin: new Date().toDateString()
+    };
+
+    let flashcards = JSON.parse(localStorage.getItem('police_cards')) || [];
+    let currentIndex = 0;
+
+    // Patentes Policiais
+    function getRank(xp) {
+      if (xp < 100) return 'Recruta';
+      if (xp < 300) return 'Agente PC / PF';
+      if (xp < 600) return 'Investigador VIP';
+      if (xp < 1000) return 'Inspetor PRF';
+      return 'Delegado de Polícia';
+    }
+
+    // Atualizar UI dos Status
+    function updateStatsUI() {
+      document.getElementById('xp-count').innerText = userStats.xp;
+      document.getElementById('streak-count').innerText = userStats.streak;
+      document.getElementById('user-rank').innerText = getRank(userStats.xp);
+      localStorage.setItem('police_stats', JSON.stringify(userStats));
+    }
+
+    // Virar Cartão
+    function flipCard() {
+      if (flashcards.length === 0) return;
+      const card = document.getElementById('current-card');
+      card.classList.toggle('flipped');
+      document.getElementById('response-buttons').style.display = card.classList.contains('flipped') ? 'flex' : 'none';
+    }
+
+    // Exibir Flashcard Atual
+    function showCard() {
+      const cardArea = document.getElementById('current-card');
+      cardArea.classList.remove('flipped');
+      document.getElementById('response-buttons').style.display = 'none';
+
+      if (flashcards.length === 0) {
+        document.getElementById('card-question').innerText = "Nenhum flashcard disponível. Alimente o sistema!";
+        document.getElementById('card-answer').innerText = "";
+        document.getElementById('category-tag').innerText = "Matéria: --";
+        return;
+      }
+
+      const item = flashcards[currentIndex];
+      document.getElementById('card-question').innerText = item.q;
+      document.getElementById('card-answer').innerText = item.a;
+      document.getElementById('category-tag').innerText = "Matéria: " + (item.tag || "Geral");
+    }
+
+    // Responder Cartão e Ganhar XP
+    function answerCard(success) {
+      const gainedXP = success ? 15 : 5;
+      userStats.xp += gainedXP;
+      updateStatsUI();
+
+      // Próximo Card
+      currentIndex = (currentIndex + 1) % flashcards.length;
+      showCard();
+    }
+
+    // Trocar Abas
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById('tab-' + tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Importar em Lote do NotebookLM
+    function importBatch() {
+      const text = document.getElementById('batch-input').value.trim();
+      if (!text) return;
+
+      const lines = text.split('\n');
+      let count = 0;
+
+      lines.forEach(line => {
+        const parts = line.split('|');
+        if (parts.length >= 2) {
+          flashcards.push({
+            q: parts[0].trim(),
+            a: parts[1].trim(),
+            tag: parts[2] ? parts[2].trim() : "Geral"
+          });
+          count++;
+        }
+      });
+
+      localStorage.setItem('police_cards', JSON.stringify(flashcards));
+      document.getElementById('batch-input').value = '';
+      alert(`${count} Flashcards importados com sucesso!`);
+      showCard();
+      switchTab('flashcards');
+    }
+
+    // Inicialização
+    updateStatsUI();
+    showCard();
+  </script>
+</body>
+</html>
