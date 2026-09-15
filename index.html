@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QG POLICIAL // EDGERUNNER MULTI-STRIKE</title>
+  <title>QG BADDIE // Y2K LAW CLUB 💋</title>
   <style>
     :root {
-      --bg-dark: #0d061c;
-      --card-bg: #25104D;       /* Dark Amethyst */
-      --card-border: #5B1C2E;   /* Night Bordeaux */
-      --accent-yellow: #FAB940; /* Sunflower Gold */
-      --accent-pink: #C2286B;   /* Hot Rose */
-      --accent-cyan: #00F0FF;   /* Cyber Cyan */
-      --accent-lavender: #F7D9FC; /* Lavender Veil */
+      --bg-dark: #120019;         /* Fundo Violeta Profundo */
+      --card-bg: #270038;         /* Card Baddie Velvet */
+      --card-border: #FF1493;     /* Hot Pink */
+      --accent-pink: #FF1493;     /* Hot Pink Vibrant */
+      --accent-baby-pink: #FFB6C1;/* Baby Pink */
+      --accent-silver: #E8E8E8;   /* Chrome Silver */
+      --accent-purple: #B5179E;   /* Electric Purple */
       --text-main: #FFFFFF;
-      --text-muted: #c8a3dc;
-      --accent-green: #22c55e;
+      --text-muted: #F7D9FC;      /* Lavender Veil */
+      --accent-green: #00FF88;   /* Cyber Neon Green */
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Consolas', 'Courier New', monospace, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Trebuchet MS', 'Segoe UI', sans-serif; }
     
     body { 
       background-color: var(--bg-dark); 
@@ -26,74 +26,82 @@
       min-height: 100vh; 
       display: flex; 
       flex-direction: column;
-      background-image: linear-gradient(rgba(37, 16, 77, 0.4) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(37, 16, 77, 0.4) 1px, transparent 1px);
-      background-size: 30px 30px;
+      /* Padronagem Y2K com grade e brilho rosa */
+      background-image: radial-gradient(circle at 50% 50%, rgba(255, 20, 147, 0.15) 0%, transparent 60%),
+                        linear-gradient(rgba(255, 182, 193, 0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 182, 193, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 25px 25px, 25px 25px;
     }
 
+    /* Topo Patricinha Y2K */
     header {
-      background: rgba(13, 6, 28, 0.95);
+      background: rgba(39, 0, 56, 0.9);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 3px solid var(--accent-pink);
-      box-shadow: 0 0 15px rgba(194, 40, 107, 0.4);
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
       flex-wrap: wrap;
       gap: 1rem;
     }
 
     h2 {
-      color: var(--accent-yellow);
+      color: var(--accent-baby-pink);
       text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: 0 0 8px rgba(250, 185, 64, 0.6);
+      font-weight: 900;
+      text-shadow: 0 0 10px var(--accent-pink), 0 0 20px var(--accent-pink);
     }
 
     .user-stats { display: flex; gap: 1rem; align-items: center; }
     
     .stat-badge {
-      background: var(--card-bg);
+      background: rgba(181, 23, 158, 0.3);
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 20px;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      border: 1px solid var(--accent-pink);
+      border: 1.5px solid var(--accent-baby-pink);
+      box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
     }
     
-    .streak { color: var(--accent-yellow); text-shadow: 0 0 5px var(--accent-yellow); }
-    .xp { color: var(--accent-cyan); text-shadow: 0 0 5px var(--accent-cyan); }
-    .rank { color: var(--accent-lavender); text-transform: uppercase; font-size: 0.85rem; }
+    .streak { color: #FFD700; text-shadow: 0 0 5px #FFD700; }
+    .xp { color: var(--accent-baby-pink); text-shadow: 0 0 5px var(--accent-pink); }
+    .rank { color: #FFF; text-transform: uppercase; font-size: 0.85rem; }
 
+    /* Navegação com Efeito Glossy */
     nav { 
       display: flex; 
       justify-content: center; 
       gap: 0.5rem; 
-      background: #15092b; 
-      padding: 0.75rem; 
-      border-bottom: 1px solid var(--card-border);
+      background: #1c0029; 
+      padding: 0.8rem; 
+      border-bottom: 1px solid var(--accent-pink);
       flex-wrap: wrap;
     }
     
     nav button {
-      background: transparent;
+      background: linear-gradient(180deg, #3d0057 0%, #1c0029 100%);
       border: 1px solid var(--accent-pink);
-      color: var(--text-main);
+      color: var(--accent-baby-pink);
       font-weight: bold;
-      padding: 0.6rem 1rem;
+      padding: 0.6rem 1.1rem;
       cursor: pointer;
       text-transform: uppercase;
-      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+      border-radius: 15px;
       transition: all 0.2s;
       font-size: 0.85rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
     
     nav button.active, nav button:hover { 
-      background: var(--accent-pink); 
-      color: #000; 
-      box-shadow: 0 0 10px var(--accent-pink);
+      background: linear-gradient(180deg, #FF1493 0%, #B5179E 100%); 
+      color: #FFF; 
+      box-shadow: 0 0 15px var(--accent-pink);
+      transform: translateY(-2px);
     }
 
     main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
@@ -102,60 +110,60 @@
 
     .content-box {
       background: var(--card-bg);
-      border: 2px solid var(--accent-cyan);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-      padding: 1.5rem;
-      border-radius: 4px;
+      border: 2px solid var(--accent-pink);
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+      padding: 1.8rem;
+      border-radius: 15px;
       margin-bottom: 1.5rem;
     }
 
-    /* Flashcards */
+    /* Flashcards Baddie */
     .flashcard-container { perspective: 1000px; width: 100%; height: 260px; margin: 1.5rem 0; cursor: pointer; }
     .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s; }
     .flashcard.flipped { transform: rotateY(180deg); }
     .card-front, .card-back {
       position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 2rem; border-radius: 4px; background: var(--card-bg); border: 2px solid var(--accent-cyan); text-align: center;
+      padding: 2rem; border-radius: 15px; background: var(--card-bg); border: 2px solid var(--accent-baby-pink);
+      box-shadow: inset 0 0 15px rgba(255, 20, 147, 0.2), 0 0 15px rgba(255, 182, 193, 0.3); text-align: center;
     }
-    .card-back { transform: rotateY(180deg); background: #190a36; border-color: var(--accent-yellow); }
+    .card-back { transform: rotateY(180deg); background: #380052; border-color: var(--accent-pink); }
 
-    /* Múltipla Escolha */
+    /* Botões Baddie Glossy */
     .option-btn {
-      display: block; width: 100%; text-align: left; padding: 0.8rem 1rem; margin: 0.5rem 0;
-      background: #190a36; border: 1px solid var(--accent-pink); color: #fff; cursor: pointer;
-      transition: background 0.2s;
+      display: block; width: 100%; text-align: left; padding: 0.9rem 1.2rem; margin: 0.6rem 0;
+      background: rgba(255, 255, 255, 0.05); border: 1.5px solid var(--accent-pink); color: #fff; cursor: pointer;
+      border-radius: 10px; transition: all 0.2s; font-weight: 600;
     }
-    .option-btn:hover { background: var(--card-border); }
-    .option-btn.correct { background: var(--accent-green) !important; color: #000; font-weight: bold; }
+    .option-btn:hover { background: rgba(255, 20, 147, 0.2); box-shadow: 0 0 10px var(--accent-pink); }
+    .option-btn.correct { background: var(--accent-green) !important; color: #000; font-weight: bold; border-color: #00FF88; }
     .option-btn.wrong { background: var(--accent-pink) !important; color: #fff; }
 
-    /* Botões Genericos */
     .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
     .btn {
-      padding: 0.75rem 1.5rem; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;
-      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); transition: transform 0.1s;
+      padding: 0.8rem 1.8rem; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;
+      border-radius: 25px; transition: all 0.2s; box-shadow: 0 0 10px rgba(255, 20, 147, 0.4);
     }
     .btn:active { transform: scale(0.95); }
-    .btn-easy { background: var(--accent-cyan); color: #000; box-shadow: 0 0 10px var(--accent-cyan); }
-    .btn-hard { background: var(--accent-pink); color: #fff; box-shadow: 0 0 10px var(--accent-pink); }
-    .btn-primary { background: var(--accent-yellow); color: #000; box-shadow: 0 0 10px var(--accent-yellow); }
+    .btn-easy { background: linear-gradient(180deg, #FFB6C1 0%, #FF1493 100%); color: #000; }
+    .btn-hard { background: linear-gradient(180deg, #7B009A 0%, #380052 100%); color: #fff; border: 1px solid var(--accent-pink); }
+    .btn-primary { background: linear-gradient(180deg, #FFF 0%, #FFB6C1 100%); color: #B5179E; font-weight: 900; }
 
-    textarea, input {
-      width: 100%; padding: 1rem; background: #090314; border: 1px solid var(--accent-pink);
-      color: var(--accent-lavender); border-radius: 4px; margin-top: 0.5rem; margin-bottom: 1rem;
+    textarea, select {
+      width: 100%; padding: 1rem; background: #160021; border: 1.5px solid var(--accent-pink);
+      color: var(--text-muted); border-radius: 10px; margin-top: 0.5rem; margin-bottom: 1rem;
     }
-    textarea:focus { outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
+    textarea:focus { outline: none; border-color: var(--accent-baby-pink); box-shadow: 0 0 12px var(--accent-pink); }
   </style>
 </head>
 <body>
 
   <header>
-    <h2>⚡ QG POLICIAL // MULTI-METHOD</h2>
+    <h2>💋 QG BADDIE // Y2K LAW CLUB</h2>
     <div class="user-stats">
       <div class="stat-badge streak">🔥 <span id="streak-count">0</span> DIAS</div>
-      <div class="stat-badge xp">⚡ <span id="xp-count">0</span> XP</div>
-      <div class="stat-badge rank">🛡️ <span id="user-rank">Recruta</span></div>
+      <div class="stat-badge xp">✨ <span id="xp-count">0</span> XP</div>
+      <div class="stat-badge rank">👑 <span id="user-rank">Recruta Baddie</span></div>
     </div>
   </header>
 
@@ -168,17 +176,17 @@
   </nav>
 
   <main>
-    <!-- ABA 1: RESUMOS E MÉTODO FEYNMAN -->
+    <!-- RESUMOS -->
     <section id="tab-resumos" class="tab-content active">
       <div class="content-box">
-        <h3 style="color: var(--accent-yellow);" id="resumo-titulo">// TÍTULO DO ASSUNTO</h3>
-        <p style="color: var(--accent-cyan); margin-bottom: 1rem;" id="resumo-materia">Matéria: --</p>
+        <h3 style="color: var(--accent-baby-pink);" id="resumo-titulo">✨ TÍTULO DO ASSUNTO</h3>
+        <p style="color: var(--accent-pink); margin-bottom: 1rem; font-weight: bold;" id="resumo-materia">Matéria: --</p>
         <div id="resumo-texto" style="line-height: 1.6; color: var(--text-main); margin-bottom: 1.5rem;">
-          Nenhum resumo cadastrado. Vá até a aba Alimentar para enviar conteúdos do NotebookLM!
+          Nenhum resumo cadastrado. Vá até a aba Alimentar para colar conteúdos do seu NotebookLM!
         </div>
         
-        <h4 style="color: var(--accent-lavender); margin-top: 1rem;">🧠 Método Feynman: Explique este assunto em frases simples:</h4>
-        <textarea id="feynman-input" rows="3" placeholder="Escreva com suas palavras para fixar o aprendizado..."></textarea>
+        <h4 style="color: var(--accent-baby-pink); margin-top: 1rem;">💄 Método Feynman: Explique do seu jeito diva:</h4>
+        <textarea id="feynman-input" rows="3" placeholder="Resuma em palavras simples como se estivesse explicando para sua amiga..."></textarea>
         <button class="btn btn-easy" onclick="saveFeynman()">Concluir Explicação (+10 XP)</button>
       </div>
       <div class="action-btns">
@@ -186,9 +194,9 @@
       </div>
     </section>
 
-    <!-- ABA 2: FLASHCARDS -->
+    <!-- FLASHCARDS -->
     <section id="tab-flashcards" class="tab-content">
-      <p style="text-align: center; color: var(--accent-cyan);" id="card-tag">// MATÉRIA: --</p>
+      <p style="text-align: center; color: var(--accent-baby-pink); font-weight: bold;" id="card-tag">💋 MATÉRIA: --</p>
       <div class="flashcard-container" onclick="flipCard()">
         <div class="flashcard" id="current-card">
           <div class="card-front"><h3 id="card-question">Nenhum flashcard disponível.</h3></div>
@@ -201,26 +209,26 @@
       </div>
     </section>
 
-    <!-- ABA 3: MÚLTIPLA ESCOLHA -->
+    <!-- MÚLTIPLA ESCOLHA -->
     <section id="tab-mcq" class="tab-content">
       <div class="content-box">
         <h3 id="mcq-question" style="color: var(--text-main); margin-bottom: 1rem;">Nenhuma questão cadastrada.</h3>
         <div id="mcq-options"></div>
-        <div id="mcq-comment" style="display: none; margin-top: 1rem; color: var(--accent-lavender); border-top: 1px dashed var(--accent-pink); padding-top: 1rem;"></div>
+        <div id="mcq-comment" style="display: none; margin-top: 1rem; color: var(--accent-baby-pink); border-top: 1px dashed var(--accent-pink); padding-top: 1rem;"></div>
       </div>
       <div class="action-btns">
         <button class="btn btn-primary" onclick="nextMCQ()">Próxima Questão ➔</button>
       </div>
     </section>
 
-    <!-- ABA 4: QUESTÕES DISCURSIVAS -->
+    <!-- DISCURSIVAS -->
     <section id="tab-discursivas" class="tab-content">
       <div class="content-box">
-        <h3 style="color: var(--accent-yellow);" id="disc-question">// PERGUNTA DISCURSIVA / CASO PRÁTICO</h3>
-        <textarea id="disc-user-ans" rows="5" placeholder="Digite sua resposta estruturada aqui..."></textarea>
+        <h3 style="color: var(--accent-baby-pink);" id="disc-question">💅 PERGUNTA DISCURSIVA / CASO PRÁTICO</h3>
+        <textarea id="disc-user-ans" rows="5" placeholder="Digite sua resposta estruturada e bem fundamentada aqui..."></textarea>
         <button class="btn btn-primary" onclick="toggleEspelho()">Revelar Espelho de Correção</button>
-        <div id="disc-espelho" style="display: none; margin-top: 1rem; padding: 1rem; background: #190a36; border: 1px solid var(--accent-yellow);">
-          <h4 style="color: var(--accent-yellow);">Gabarito / Fundamentação:</h4>
+        <div id="disc-espelho" style="display: none; margin-top: 1rem; padding: 1rem; background: #380052; border: 1.5px solid var(--accent-pink); border-radius: 10px;">
+          <h4 style="color: var(--accent-baby-pink);">Gabarito / Fundamentação:</h4>
           <p id="disc-answer-text" style="color: var(--text-main); margin-top: 0.5rem;"></p>
         </div>
       </div>
@@ -229,44 +237,44 @@
       </div>
     </section>
 
-    <!-- ABA 5: ALIMENTAR PAINEL -->
+    <!-- IMPORTAÇÃO -->
     <section id="tab-import" class="tab-content">
-      <h3 style="color: var(--accent-yellow);">📥 ALIMENTAR BANCO DE DADOS</h3>
-      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-        Selecione o tipo de conteúdo e cole o texto gerado pelo seu NotebookLM:
+      <h3 style="color: var(--accent-baby-pink);">📥 ALIMENTAR BANCO DE DADOS</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+        Escolha o tipo de conteúdo e cole o código do seu NotebookLM:
       </p>
 
-      <select id="import-type" style="width: 100%; padding: 0.8rem; background: #090314; color: var(--accent-cyan); border: 1px solid var(--accent-pink); margin-bottom: 1rem;">
+      <select id="import-type">
         <option value="flashcards">🃏 Flashcards (Pergunta | Resposta | Matéria)</option>
         <option value="resumos">📖 Resumos (Título | Texto Explicativo | Matéria)</option>
         <option value="mcq">🎯 Múltipla Escolha (Pergunta | A | B | C | D | RespCorreta(A-D) | Comentário)</option>
         <option value="disc">✏️ Discursiva (Enunciado | Espelho de Correção | Matéria)</option>
       </select>
       
-      <textarea id="batch-input" rows="8" placeholder="Cole aqui conforme o formato escolhido acima..."></textarea>
-      <button class="btn btn-primary" onclick="importData()">INJETAR DADOS</button>
+      <textarea id="batch-input" rows="8" placeholder="Cole aqui no formato escolhido..."></textarea>
+      <button class="btn btn-primary" onclick="importData()">INJETAR DADOS DIVA</button>
     </section>
   </main>
 
   <script>
-    let userStats = JSON.parse(localStorage.getItem('police_stats')) || { xp: 0, streak: 1 };
-    let db = JSON.parse(localStorage.getItem('police_db_multi')) || { resumos: [], flashcards: [], mcq: [], disc: [] };
+    let userStats = JSON.parse(localStorage.getItem('police_stats_baddie')) || { xp: 0, streak: 1 };
+    let db = JSON.parse(localStorage.getItem('police_db_baddie')) || { resumos: [], flashcards: [], mcq: [], disc: [] };
     
     let idx = { resumos: 0, flashcards: 0, mcq: 0, disc: 0 };
 
     function getRank(xp) {
-      if (xp < 100) return 'Recruta Policial';
-      if (xp < 300) return 'Agente de Polícia';
-      if (xp < 600) return 'Oficial Investigador';
-      if (xp < 1000) return 'Inspetor PRF/PF';
-      return 'Delegado Edgerunner';
+      if (xp < 100) return 'Recruta Baddie';
+      if (xp < 300) return 'Estagiária do Crime';
+      if (xp < 600) return 'Dra. Investigadora (PC-AP)';
+      if (xp < 1000) return 'Dama da PRF/PF';
+      return 'Delegada Boss Bitch';
     }
 
     function updateStatsUI() {
       document.getElementById('xp-count').innerText = userStats.xp;
       document.getElementById('streak-count').innerText = userStats.streak;
       document.getElementById('user-rank').innerText = getRank(userStats.xp);
-      localStorage.setItem('police_stats', JSON.stringify(userStats));
+      localStorage.setItem('police_stats_baddie', JSON.stringify(userStats));
     }
 
     function switchTab(tabId) {
@@ -280,14 +288,14 @@
     function loadResumo() {
       if(db.resumos.length === 0) return;
       let item = db.resumos[idx.resumos];
-      document.getElementById('resumo-titulo').innerText = "// " + item.t;
+      document.getElementById('resumo-titulo').innerText = "✨ " + item.t;
       document.getElementById('resumo-materia').innerText = "Matéria: " + item.m;
       document.getElementById('resumo-texto').innerText = item.txt;
       document.getElementById('feynman-input').value = "";
     }
     function saveFeynman() {
       if(document.getElementById('feynman-input').value.trim() !== ""){
-        userStats.xp += 10; updateStatsUI(); alert("Explicacao registrada! +10 XP");
+        userStats.xp += 10; updateStatsUI(); alert("Arrasou! Explicação salva com sucesso! +10 XP");
       }
     }
     function nextResumo() { if(db.resumos.length) { idx.resumos = (idx.resumos + 1) % db.resumos.length; loadResumo(); } }
@@ -306,7 +314,7 @@
       let item = db.flashcards[idx.flashcards];
       document.getElementById('card-question').innerText = item.q;
       document.getElementById('card-answer').innerText = item.a;
-      document.getElementById('card-tag').innerText = "// MATÉRIA: " + item.m;
+      document.getElementById('card-tag').innerText = "💋 MATÉRIA: " + item.m;
     }
     function answerCard(win) {
       userStats.xp += win ? 15 : 5; updateStatsUI();
@@ -387,9 +395,9 @@
         }
       });
 
-      localStorage.setItem('police_db_multi', JSON.stringify(db));
+      localStorage.setItem('police_db_baddie', JSON.stringify(db));
       document.getElementById('batch-input').value = '';
-      alert(`${count} itens carregados com sucesso!`);
+      alert(`${count} itens injetados com sucesso, diva!`);
       initAll();
     }
 
