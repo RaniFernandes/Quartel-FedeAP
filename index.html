@@ -3,61 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QG de Estudos Policiais - AP & Geral</title>
+  <title>QG POLICIAL // EDGERUNNER STRIKE</title>
   <style>
     :root {
-      --bg-dark: #0f172a;
-      --card-bg: #1e293b;
-      --accent-gold: #fbbf24;
-      --accent-blue: #38bdf8;
-      --accent-green: #22c55e;
-      --accent-red: #ef4444;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg-dark: #0d061c;
+      --card-bg: #25104D;       /* Dark Amethyst */
+      --card-border: #5B1C2E;   /* Night Bordeaux */
+      --accent-yellow: #FAB940; /* Sunflower Gold */
+      --accent-pink: #C2286B;   /* Hot Rose */
+      --accent-cyan: #00F0FF;   /* Cyber Cyan */
+      --accent-lavender: #F7D9FC; /* Lavender Veil */
+      --text-main: #FFFFFF;
+      --text-muted: #c8a3dc;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Consolas', 'Courier New', monospace, sans-serif; }
+    
+    body { 
+      background-color: var(--bg-dark); 
+      color: var(--text-main); 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      /* Efeito de linhas Cyberpunk no fundo */
+      background-image: linear-gradient(rgba(37, 16, 77, 0.4) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(37, 16, 77, 0.4) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
 
-    /* Header Gamificado */
+    /* Header Cyberpunk */
     header {
-      background: #020617;
+      background: rgba(13, 6, 28, 0.95);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #334155;
+      border-bottom: 3px solid var(--accent-pink);
+      box-shadow: 0 0 15px rgba(194, 40, 107, 0.4);
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .user-stats { display: flex; gap: 1.5rem; align-items: center; }
+
+    h2 {
+      color: var(--accent-yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px rgba(250, 185, 64, 0.6);
+    }
+
+    .user-stats { display: flex; gap: 1rem; align-items: center; }
+    
     .stat-badge {
       background: var(--card-bg);
       padding: 0.5rem 1rem;
-      border-radius: 20px;
+      border-radius: 4px;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      border: 1px solid #334155;
+      border: 1px solid var(--accent-pink);
     }
-    .streak { color: var(--accent-gold); }
-    .xp { color: var(--accent-blue); }
-    .rank { color: var(--accent-green); text-transform: uppercase; font-size: 0.85rem; }
+    
+    .streak { color: var(--accent-yellow); text-shadow: 0 0 5px var(--accent-yellow); }
+    .xp { color: var(--accent-cyan); text-shadow: 0 0 5px var(--accent-cyan); }
+    .rank { color: var(--accent-lavender); text-transform: uppercase; font-size: 0.85rem; }
 
-    /* Navegação */
-    nav { display: flex; justify-content: center; gap: 1rem; background: var(--card-bg); padding: 0.75rem; }
+    /* Navegação Estilo HUD */
+    nav { 
+      display: flex; 
+      justify-content: center; 
+      gap: 1rem; 
+      background: #15092b; 
+      padding: 0.75rem; 
+      border-bottom: 1px solid var(--card-border);
+    }
+    
     nav button {
       background: transparent;
-      border: none;
-      color: var(--text-muted);
+      border: 1px solid var(--accent-pink);
+      color: var(--text-main);
       font-weight: bold;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.2rem;
       cursor: pointer;
-      border-radius: 8px;
+      text-transform: uppercase;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
       transition: all 0.2s;
     }
-    nav button.active, nav button:hover { background: #334155; color: var(--text-main); }
+    
+    nav button.active, nav button:hover { 
+      background: var(--accent-pink); 
+      color: #000; 
+      box-shadow: 0 0 10px var(--accent-pink);
+    }
 
     /* Layout Conteúdo */
     main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
@@ -68,19 +105,21 @@
     .flashcard-container {
       perspective: 1000px;
       width: 100%;
-      height: 280px;
+      height: 300px;
       margin: 2rem 0;
       cursor: pointer;
     }
+    
     .flashcard {
       width: 100%;
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.6s;
-      border-radius: 12px;
     }
+    
     .flashcard.flipped { transform: rotateY(180deg); }
+    
     .card-front, .card-back {
       position: absolute;
       width: 100%;
@@ -91,99 +130,128 @@
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      border-radius: 12px;
+      border-radius: 4px;
       background: var(--card-bg);
-      border: 2px solid #334155;
+      border: 2px solid var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
       text-align: center;
     }
-    .card-back { transform: rotateY(180deg); background: #111827; border-color: var(--accent-blue); }
+    
+    .card-back { 
+      transform: rotateY(180deg); 
+      background: #190a36; 
+      border-color: var(--accent-yellow);
+      box-shadow: 0 0 15px rgba(250, 185, 64, 0.3);
+    }
 
-    /* Botões de Ação Gamificados */
+    /* Botões Cyberpunk */
     .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+    
     .btn {
       padding: 0.75rem 1.5rem;
       border: none;
-      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.1s, filter 0.2s;
+      text-transform: uppercase;
+      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+      transition: transform 0.1s, box-shadow 0.2s;
     }
+    
     .btn:active { transform: scale(0.95); }
-    .btn-easy { background: var(--accent-green); color: white; }
-    .btn-hard { background: var(--accent-red); color: white; }
-    .btn-primary { background: var(--accent-blue); color: #0f172a; }
+    
+    .btn-easy { 
+      background: var(--accent-cyan); 
+      color: #000; 
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+    
+    .btn-hard { 
+      background: var(--accent-pink); 
+      color: #fff; 
+      box-shadow: 0 0 10px var(--accent-pink);
+    }
+    
+    .btn-primary { 
+      background: var(--accent-yellow); 
+      color: #000; 
+      box-shadow: 0 0 10px var(--accent-yellow);
+    }
 
-    /* Formulários e Importação */
-    textarea, input, select {
+    /* Inputs estilo Terminal */
+    textarea {
       width: 100%;
-      padding: 0.75rem;
-      background: #0f172a;
-      border: 1px solid #334155;
-      color: white;
-      border-radius: 8px;
+      padding: 1rem;
+      background: #090314;
+      border: 1px solid var(--accent-pink);
+      color: var(--accent-lavender);
+      border-radius: 4px;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
+    }
+    
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra Gamificada estilo Duolingo -->
+  <!-- Barra Gamificada HUD Cyberpunk -->
   <header>
-    <h2>🎯 QG Policial</h2>
+    <h2>⚡ QG POLICIAL // AP & PF</h2>
     <div class="user-stats">
-      <div class="stat-badge streak">🔥 <span id="streak-count">0</span> Dias</div>
+      <div class="stat-badge streak">🔥 <span id="streak-count">0</span> DIAS</div>
       <div class="stat-badge xp">⚡ <span id="xp-count">0</span> XP</div>
       <div class="stat-badge rank">🛡️ <span id="user-rank">Recruta</span></div>
     </div>
   </header>
 
-  <!-- Abas de Navegação -->
+  <!-- Navegação -->
   <nav>
-    <button class="active" onclick="switchTab('flashcards')">🃏 Flashcards</button>
-    <button onclick="switchTab('import')">📥 Alimentar (NotebookLM)</button>
+    <button class="active" onclick="switchTab('flashcards')">🃏 FLASHCARDS</button>
+    <button onclick="switchTab('import')">📥 IMPORTER (NOTEBOOKLM)</button>
   </nav>
 
   <main>
     <!-- ABA: FLASHCARDS -->
     <section id="tab-flashcards" class="tab-content active">
       <div id="card-area">
-        <p style="text-align: center; color: var(--text-muted);" id="category-tag">Matéria: --</p>
+        <p style="text-align: center; color: var(--accent-cyan);" id="category-tag">// MATÉRIA: NENHUMA</p>
         <div class="flashcard-container" onclick="flipCard()">
           <div class="flashcard" id="current-card">
             <div class="card-front">
-              <h3 id="card-question">Nenhum flashcard cadastrado ainda. Vá na aba "Alimentar" para adicionar contéudo do NotebookLM!</h3>
+              <h3 id="card-question" style="color: var(--text-main);">Nenhum flashcard cadastrado ainda. Vá na aba "IMPORTER" para colar dados do NotebookLM!</h3>
             </div>
             <div class="card-back">
-              <p id="card-answer">A resposta aparecerá aqui.</p>
+              <p id="card-answer" style="color: var(--accent-lavender);">A resposta aparecerá aqui.</p>
             </div>
           </div>
         </div>
 
         <div class="action-btns" id="response-buttons" style="display: none;">
-          <button class="btn btn-hard" onclick="answerCard(false)">Errei / Difícil (+5 XP)</button>
-          <button class="btn btn-easy" onclick="answerCard(true)">Acertei (+15 XP)</button>
+          <button class="btn btn-hard" onclick="answerCard(false)">ERREI / DIFÍCIL (+5 XP)</button>
+          <button class="btn btn-easy" onclick="answerCard(true)">ACERTEI (+15 XP)</button>
         </div>
       </div>
     </section>
 
     <!-- ABA: ALIMENTAR PAINEL -->
     <section id="tab-import" class="tab-content">
-      <h3>📥 Importar Conteúdo Gerado pelo NotebookLM</h3>
+      <h3 style="color: var(--accent-yellow);">📥 INJETAR DADOS DO NOTEBOOKLM</h3>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-        Cole abaixo no formato: <code>Pergunta | Resposta | Matéria</code> (Uma por linha)
+        Cole o conteúdo gerado no formato: <code>Pergunta | Resposta | Matéria</code> (Uma por linha)
       </p>
       
-      <textarea id="batch-input" rows="8" placeholder="Exemplo:
-O que é o princípio da insignificância? | Causa supra-legal de exclusão da tipicidade material. | Direito Penal
-Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 dias, duplicável por igual período. | Legislação Especial"></textarea>
+      <textarea id="batch-input" rows="8" placeholder="O que é a Teoria da Graxa? | Conjunto de atos ilícitos tolerados para agilizar procedimentos. | Direito Penal
+Qual o prazo da Prisão Temporária em crimes hediondos? | 30 dias, prorrogável por igual período. | Processo Penal"></textarea>
       
-      <button class="btn btn-primary" onclick="importBatch()">Adicionar Flashcards ao Banco</button>
+      <button class="btn btn-primary" onclick="importBatch()">SALVAR NO BANCO DE DADOS</button>
     </section>
   </main>
 
   <script>
-    // Estado da Gamificação
     let userStats = JSON.parse(localStorage.getItem('police_stats')) || {
       xp: 0,
       streak: 1,
@@ -193,16 +261,14 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
     let flashcards = JSON.parse(localStorage.getItem('police_cards')) || [];
     let currentIndex = 0;
 
-    // Patentes Policiais
     function getRank(xp) {
-      if (xp < 100) return 'Recruta';
-      if (xp < 300) return 'Agente PC / PF';
-      if (xp < 600) return 'Investigador VIP';
-      if (xp < 1000) return 'Inspetor PRF';
-      return 'Delegado de Polícia';
+      if (xp < 100) return 'Recruta Policial';
+      if (xp < 300) return 'Agente de Polícia';
+      if (xp < 600) return 'Oficial Investigador (PC-AP)';
+      if (xp < 1000) return 'Inspetor (PRF / PF)';
+      return 'Delegado Edgerunner';
     }
 
-    // Atualizar UI dos Status
     function updateStatsUI() {
       document.getElementById('xp-count').innerText = userStats.xp;
       document.getElementById('streak-count').innerText = userStats.streak;
@@ -210,7 +276,6 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
       localStorage.setItem('police_stats', JSON.stringify(userStats));
     }
 
-    // Virar Cartão
     function flipCard() {
       if (flashcards.length === 0) return;
       const card = document.getElementById('current-card');
@@ -218,7 +283,6 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
       document.getElementById('response-buttons').style.display = card.classList.contains('flipped') ? 'flex' : 'none';
     }
 
-    // Exibir Flashcard Atual
     function showCard() {
       const cardArea = document.getElementById('current-card');
       cardArea.classList.remove('flipped');
@@ -227,28 +291,24 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
       if (flashcards.length === 0) {
         document.getElementById('card-question').innerText = "Nenhum flashcard disponível. Alimente o sistema!";
         document.getElementById('card-answer').innerText = "";
-        document.getElementById('category-tag').innerText = "Matéria: --";
+        document.getElementById('category-tag').innerText = "// MATÉRIA: --";
         return;
       }
 
       const item = flashcards[currentIndex];
       document.getElementById('card-question').innerText = item.q;
       document.getElementById('card-answer').innerText = item.a;
-      document.getElementById('category-tag').innerText = "Matéria: " + (item.tag || "Geral");
+      document.getElementById('category-tag').innerText = "// MATÉRIA: " + (item.tag || "Geral");
     }
 
-    // Responder Cartão e Ganhar XP
     function answerCard(success) {
       const gainedXP = success ? 15 : 5;
       userStats.xp += gainedXP;
       updateStatsUI();
-
-      // Próximo Card
       currentIndex = (currentIndex + 1) % flashcards.length;
       showCard();
     }
 
-    // Trocar Abas
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
@@ -257,7 +317,6 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
       event.target.classList.add('active');
     }
 
-    // Importar em Lote do NotebookLM
     function importBatch() {
       const text = document.getElementById('batch-input').value.trim();
       if (!text) return;
@@ -284,7 +343,6 @@ Qual o prazo do inquérito policial com indiciado preso na lei de drogas? | 30 d
       switchTab('flashcards');
     }
 
-    // Inicialização
     updateStatsUI();
     showCard();
   </script>
