@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QG BADDIE // Y2K LAW CLUB 💋</title>
+  <title>QG BADDIE // HUB MULTIDISCIPLINAR Y2K 💋</title>
   <style>
     :root {
-      --bg-dark: #120019;         /* Fundo Violeta Profundo */
-      --card-bg: #270038;         /* Card Baddie Velvet */
-      --card-border: #FF1493;     /* Hot Pink */
-      --accent-pink: #FF1493;     /* Hot Pink Vibrant */
-      --accent-baby-pink: #FFB6C1;/* Baby Pink */
-      --accent-silver: #E8E8E8;   /* Chrome Silver */
-      --accent-purple: #B5179E;   /* Electric Purple */
+      --bg-dark: #120019;
+      --card-bg: #270038;
+      --card-border: #FF1493;
+      --accent-pink: #FF1493;
+      --accent-baby-pink: #FFB6C1;
+      --accent-silver: #E8E8E8;
+      --accent-purple: #B5179E;
+      --accent-cyan: #00F0FF;
       --text-main: #FFFFFF;
-      --text-muted: #F7D9FC;      /* Lavender Veil */
-      --accent-green: #00FF88;   /* Cyber Neon Green */
+      --text-muted: #F7D9FC;
+      --accent-green: #00FF88;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Trebuchet MS', 'Segoe UI', sans-serif; }
@@ -26,16 +27,15 @@
       min-height: 100vh; 
       display: flex; 
       flex-direction: column;
-      /* Padronagem Y2K com grade e brilho rosa */
       background-image: radial-gradient(circle at 50% 50%, rgba(255, 20, 147, 0.15) 0%, transparent 60%),
                         linear-gradient(rgba(255, 182, 193, 0.05) 1px, transparent 1px),
                         linear-gradient(90deg, rgba(255, 182, 193, 0.05) 1px, transparent 1px);
       background-size: 100% 100%, 25px 25px, 25px 25px;
     }
 
-    /* Topo Patricinha Y2K */
+    /* Topo Glossy Baddie */
     header {
-      background: rgba(39, 0, 56, 0.9);
+      background: rgba(39, 0, 56, 0.95);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -52,59 +52,92 @@
       letter-spacing: 2px;
       font-weight: 900;
       text-shadow: 0 0 10px var(--accent-pink), 0 0 20px var(--accent-pink);
+      font-size: 1.3rem;
     }
 
-    .user-stats { display: flex; gap: 1rem; align-items: center; }
+    .user-stats { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
     
     .stat-badge {
       background: rgba(181, 23, 158, 0.3);
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       border-radius: 20px;
       font-weight: bold;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       border: 1.5px solid var(--accent-baby-pink);
       box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+      font-size: 0.85rem;
     }
     
     .streak { color: #FFD700; text-shadow: 0 0 5px #FFD700; }
     .xp { color: var(--accent-baby-pink); text-shadow: 0 0 5px var(--accent-pink); }
-    .rank { color: #FFF; text-transform: uppercase; font-size: 0.85rem; }
+    .rank { color: #FFF; text-transform: uppercase; }
 
-    /* Navegação com Efeito Glossy */
-    nav { 
-      display: flex; 
-      justify-content: center; 
-      gap: 0.5rem; 
-      background: #1c0029; 
-      padding: 0.8rem; 
-      border-bottom: 1px solid var(--accent-pink);
+    /* MENU PRINCIPAL DE ÁREAS (Nível Superior / Nível Médio / TI / Legislações) */
+    .area-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      background: #180024;
+      padding: 0.8rem;
+      border-bottom: 2px solid var(--accent-purple);
       flex-wrap: wrap;
     }
-    
-    nav button {
-      background: linear-gradient(180deg, #3d0057 0%, #1c0029 100%);
-      border: 1px solid var(--accent-pink);
+
+    .area-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid var(--accent-purple);
       color: var(--accent-baby-pink);
       font-weight: bold;
-      padding: 0.6rem 1.1rem;
+      padding: 0.6rem 1.2rem;
       cursor: pointer;
-      text-transform: uppercase;
-      border-radius: 15px;
+      border-radius: 12px;
       transition: all 0.2s;
       font-size: 0.85rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      text-transform: uppercase;
     }
-    
-    nav button.active, nav button:hover { 
-      background: linear-gradient(180deg, #FF1493 0%, #B5179E 100%); 
-      color: #FFF; 
+
+    .area-btn.active, .area-btn:hover {
+      background: var(--accent-pink);
+      color: #FFF;
+      border-color: #FFF;
       box-shadow: 0 0 15px var(--accent-pink);
       transform: translateY(-2px);
     }
 
-    main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%; }
+    /* SUB-MENU DE FERRAMENTAS */
+    .tool-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #230033;
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--accent-pink);
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: transparent;
+      border: 1px solid var(--accent-baby-pink);
+      color: var(--accent-silver);
+      padding: 0.4rem 0.9rem;
+      cursor: pointer;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .tool-btn.active, .tool-btn:hover {
+      background: var(--accent-purple);
+      color: #FFF;
+      border-color: var(--accent-pink);
+      box-shadow: 0 0 10px var(--accent-purple);
+    }
+
+    main { flex: 1; padding: 1.5rem; max-width: 950px; margin: 0 auto; width: 100%; }
+    
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
@@ -118,31 +151,30 @@
     }
 
     /* Flashcards Baddie */
-    .flashcard-container { perspective: 1000px; width: 100%; height: 260px; margin: 1.5rem 0; cursor: pointer; }
+    .flashcard-container { perspective: 1000px; width: 100%; height: 260px; margin: 1.2rem 0; cursor: pointer; }
     .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s; }
     .flashcard.flipped { transform: rotateY(180deg); }
     .card-front, .card-back {
       position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 2rem; border-radius: 15px; background: var(--card-bg); border: 2px solid var(--accent-baby-pink);
+      padding: 1.5rem; border-radius: 15px; background: var(--card-bg); border: 2px solid var(--accent-baby-pink);
       box-shadow: inset 0 0 15px rgba(255, 20, 147, 0.2), 0 0 15px rgba(255, 182, 193, 0.3); text-align: center;
     }
     .card-back { transform: rotateY(180deg); background: #380052; border-color: var(--accent-pink); }
 
-    /* Botões Baddie Glossy */
     .option-btn {
-      display: block; width: 100%; text-align: left; padding: 0.9rem 1.2rem; margin: 0.6rem 0;
+      display: block; width: 100%; text-align: left; padding: 0.8rem 1rem; margin: 0.5rem 0;
       background: rgba(255, 255, 255, 0.05); border: 1.5px solid var(--accent-pink); color: #fff; cursor: pointer;
-      border-radius: 10px; transition: all 0.2s; font-weight: 600;
+      border-radius: 10px; transition: all 0.2s; font-weight: 600; font-size: 0.9rem;
     }
     .option-btn:hover { background: rgba(255, 20, 147, 0.2); box-shadow: 0 0 10px var(--accent-pink); }
-    .option-btn.correct { background: var(--accent-green) !important; color: #000; font-weight: bold; border-color: #00FF88; }
+    .option-btn.correct { background: var(--accent-green) !important; color: #000; font-weight: bold; }
     .option-btn.wrong { background: var(--accent-pink) !important; color: #fff; }
 
     .action-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
     .btn {
-      padding: 0.8rem 1.8rem; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;
-      border-radius: 25px; transition: all 0.2s; box-shadow: 0 0 10px rgba(255, 20, 147, 0.4);
+      padding: 0.7rem 1.5rem; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase;
+      border-radius: 25px; transition: all 0.2s; box-shadow: 0 0 10px rgba(255, 20, 147, 0.4); font-size: 0.85rem;
     }
     .btn:active { transform: scale(0.95); }
     .btn-easy { background: linear-gradient(180deg, #FFB6C1 0%, #FF1493 100%); color: #000; }
@@ -150,16 +182,21 @@
     .btn-primary { background: linear-gradient(180deg, #FFF 0%, #FFB6C1 100%); color: #B5179E; font-weight: 900; }
 
     textarea, select {
-      width: 100%; padding: 1rem; background: #160021; border: 1.5px solid var(--accent-pink);
-      color: var(--text-muted); border-radius: 10px; margin-top: 0.5rem; margin-bottom: 1rem;
+      width: 100%; padding: 0.8rem; background: #160021; border: 1.5px solid var(--accent-pink);
+      color: var(--text-muted); border-radius: 10px; margin-top: 0.4rem; margin-bottom: 1rem; font-size: 0.9rem;
     }
-    textarea:focus { outline: none; border-color: var(--accent-baby-pink); box-shadow: 0 0 12px var(--accent-pink); }
+    textarea:focus, select:focus { outline: none; border-color: var(--accent-baby-pink); box-shadow: 0 0 12px var(--accent-pink); }
+    
+    .current-area-badge {
+      text-align: center; color: var(--accent-cyan); font-weight: bold; margin-bottom: 1rem; text-transform: uppercase;
+      letter-spacing: 1px; font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h2>💋 QG BADDIE // Y2K LAW CLUB</h2>
+    <h2>💋 QG BADDIE // MULTI-HUB</h2>
     <div class="user-stats">
       <div class="stat-badge streak">🔥 <span id="streak-count">0</span> DIAS</div>
       <div class="stat-badge xp">✨ <span id="xp-count">0</span> XP</div>
@@ -167,39 +204,49 @@
     </div>
   </header>
 
-  <nav>
-    <button class="active" onclick="switchTab('resumos')">📖 RESUMOS & FEYNMAN</button>
-    <button onclick="switchTab('flashcards')">🃏 FLASHCARDS</button>
-    <button onclick="switchTab('mcq')">🎯 MÚLTIPLA ESCOLHA</button>
-    <button onclick="switchTab('discursivas')">✏️ DISCURSIVAS</button>
-    <button onclick="switchTab('import')">📥 ALIMENTAR (NOTEBOOKLM)</button>
-  </nav>
+  <!-- NAVEGAÇÃO DE ÁREAS DE CONHECIMENTO -->
+  <div class="area-nav">
+    <button class="area-btn active" onclick="setArea('medio')">📚 Nível Médio</button>
+    <button class="area-btn" onclick="setArea('ti')">💻 Tecnologia & TI</button>
+    <button class="area-btn" onclick="setArea('superior')">⚖️ Nível Superior / Jurídico</button>
+    <button class="area-btn" onclick="setArea('orgaos')">🏛️ Legislação Específica / Órgãos</button>
+    <button class="area-btn" style="border-color: var(--accent-cyan);" onclick="setArea('import')">📥 Alimentar Banco</button>
+  </div>
+
+  <!-- SUB-NAVEGAÇÃO DE FERRAMENTAS -->
+  <div class="tool-nav" id="tool-nav-bar">
+    <button class="tool-btn active" onclick="setTool('resumos')">📖 Resumos & Feynman</button>
+    <button class="tool-btn" onclick="setTool('flashcards')">🃏 Flashcards</button>
+    <button class="tool-btn" onclick="setTool('mcq')">🎯 Múltipla Escolha</button>
+    <button class="tool-btn" onclick="setTool('disc')">✏️ Discursivas</button>
+  </div>
 
   <main>
+    <div class="current-area-badge" id="area-title-display">📍 ÁREA ATUAL: NÍVEL MÉDIO</div>
+
     <!-- RESUMOS -->
     <section id="tab-resumos" class="tab-content active">
       <div class="content-box">
         <h3 style="color: var(--accent-baby-pink);" id="resumo-titulo">✨ TÍTULO DO ASSUNTO</h3>
         <p style="color: var(--accent-pink); margin-bottom: 1rem; font-weight: bold;" id="resumo-materia">Matéria: --</p>
         <div id="resumo-texto" style="line-height: 1.6; color: var(--text-main); margin-bottom: 1.5rem;">
-          Nenhum resumo cadastrado. Vá até a aba Alimentar para colar conteúdos do seu NotebookLM!
+          Nenhum resumo nesta área. Vá até a aba Alimentar para colar conteúdos do seu NotebookLM!
         </div>
         
         <h4 style="color: var(--accent-baby-pink); margin-top: 1rem;">💄 Método Feynman: Explique do seu jeito diva:</h4>
-        <textarea id="feynman-input" rows="3" placeholder="Resuma em palavras simples como se estivesse explicando para sua amiga..."></textarea>
-        <button class="btn btn-easy" onclick="saveFeynman()">Concluir Explicação (+10 XP)</button>
+        <textarea id="feynman-input" rows="3" placeholder="Resuma com suas palavras..."></textarea>
+        <button class="btn btn-easy" onclick="saveFeynman()">Salvar Explicação (+10 XP)</button>
       </div>
       <div class="action-btns">
-        <button class="btn btn-primary" onclick="nextResumo()">Próximo Resumo ➔</button>
+        <button class="btn btn-primary" onclick="nextItem('resumos')">Próximo Resumo ➔</button>
       </div>
     </section>
 
     <!-- FLASHCARDS -->
     <section id="tab-flashcards" class="tab-content">
-      <p style="text-align: center; color: var(--accent-baby-pink); font-weight: bold;" id="card-tag">💋 MATÉRIA: --</p>
       <div class="flashcard-container" onclick="flipCard()">
         <div class="flashcard" id="current-card">
-          <div class="card-front"><h3 id="card-question">Nenhum flashcard disponível.</h3></div>
+          <div class="card-front"><h3 id="card-question">Nenhum flashcard nesta área.</h3></div>
           <div class="card-back"><p id="card-answer">A resposta aparecerá aqui.</p></div>
         </div>
       </div>
@@ -212,20 +259,20 @@
     <!-- MÚLTIPLA ESCOLHA -->
     <section id="tab-mcq" class="tab-content">
       <div class="content-box">
-        <h3 id="mcq-question" style="color: var(--text-main); margin-bottom: 1rem;">Nenhuma questão cadastrada.</h3>
+        <h3 id="mcq-question" style="color: var(--text-main); margin-bottom: 1rem;">Nenhuma questão nesta área.</h3>
         <div id="mcq-options"></div>
         <div id="mcq-comment" style="display: none; margin-top: 1rem; color: var(--accent-baby-pink); border-top: 1px dashed var(--accent-pink); padding-top: 1rem;"></div>
       </div>
       <div class="action-btns">
-        <button class="btn btn-primary" onclick="nextMCQ()">Próxima Questão ➔</button>
+        <button class="btn btn-primary" onclick="nextItem('mcq')">Próxima Questão ➔</button>
       </div>
     </section>
 
     <!-- DISCURSIVAS -->
-    <section id="tab-discursivas" class="tab-content">
+    <section id="tab-disc" class="tab-content">
       <div class="content-box">
         <h3 style="color: var(--accent-baby-pink);" id="disc-question">💅 PERGUNTA DISCURSIVA / CASO PRÁTICO</h3>
-        <textarea id="disc-user-ans" rows="5" placeholder="Digite sua resposta estruturada e bem fundamentada aqui..."></textarea>
+        <textarea id="disc-user-ans" rows="4" placeholder="Digite sua resposta estruturada..."></textarea>
         <button class="btn btn-primary" onclick="toggleEspelho()">Revelar Espelho de Correção</button>
         <div id="disc-espelho" style="display: none; margin-top: 1rem; padding: 1rem; background: #380052; border: 1.5px solid var(--accent-pink); border-radius: 10px;">
           <h4 style="color: var(--accent-baby-pink);">Gabarito / Fundamentação:</h4>
@@ -233,39 +280,64 @@
         </div>
       </div>
       <div class="action-btns">
-        <button class="btn btn-easy" onclick="nextDisc()">Concluir & Próxima (+20 XP)</button>
+        <button class="btn btn-easy" onclick="nextItem('disc')">Concluir & Próxima (+20 XP)</button>
       </div>
     </section>
 
-    <!-- IMPORTAÇÃO -->
+    <!-- INJEÇÃO DE DADOS -->
     <section id="tab-import" class="tab-content">
-      <h3 style="color: var(--accent-baby-pink);">📥 ALIMENTAR BANCO DE DADOS</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-        Escolha o tipo de conteúdo e cole o código do seu NotebookLM:
-      </p>
+      <div class="content-box">
+        <h3 style="color: var(--accent-baby-pink);">📥 ALIMENTAR BANCO DE DADOS MULTIDISCIPLINAR</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+          Selecione a área e a ferramenta correspondente para injetar os dados extraídos do seu NotebookLM:
+        </p>
 
-      <select id="import-type">
-        <option value="flashcards">🃏 Flashcards (Pergunta | Resposta | Matéria)</option>
-        <option value="resumos">📖 Resumos (Título | Texto Explicativo | Matéria)</option>
-        <option value="mcq">🎯 Múltipla Escolha (Pergunta | A | B | C | D | RespCorreta(A-D) | Comentário)</option>
-        <option value="disc">✏️ Discursiva (Enunciado | Espelho de Correção | Matéria)</option>
-      </select>
-      
-      <textarea id="batch-input" rows="8" placeholder="Cole aqui no formato escolhido..."></textarea>
-      <button class="btn btn-primary" onclick="importData()">INJETAR DADOS DIVA</button>
+        <label style="color: var(--accent-baby-pink); font-size: 0.85rem; font-weight: bold;">1. Escolha a Área de Conhecimento:</label>
+        <select id="import-area">
+          <option value="medio">📚 Nível Médio (Português, RLM, etc)</option>
+          <option value="ti">💻 Tecnologia & TI (Bancos de Dados, Redes, etc)</option>
+          <option value="superior">⚖️ Nível Superior / Jurídico (Penal, Constitucional, etc)</option>
+          <option value="orgaos">🏛️ Legislação Específica / Órgãos (PC-AP, PRF, etc)</option>
+        </select>
+
+        <label style="color: var(--accent-baby-pink); font-size: 0.85rem; font-weight: bold;">2. Escolha o Tipo de Conteúdo:</label>
+        <select id="import-type">
+          <option value="resumos">📖 Resumos (Título | Texto Explicativo | Disciplina)</option>
+          <option value="flashcards">🃏 Flashcards (Pergunta | Resposta | Disciplina)</option>
+          <option value="mcq">🎯 Múltipla Escolha (Pergunta | A | B | C | D | RespCorreta(A-D) | Comentário)</option>
+          <option value="disc">✏️ Discursiva (Enunciado | Espelho de Correção | Disciplina)</option>
+        </select>
+
+        <textarea id="batch-input" rows="7" placeholder="Cole o código do NotebookLM aqui..."></textarea>
+        <button class="btn btn-primary" onclick="importData()">INJETAR DADOS DIVA 🚀</button>
+      </div>
     </section>
   </main>
 
   <script>
-    let userStats = JSON.parse(localStorage.getItem('police_stats_baddie')) || { xp: 0, streak: 1 };
-    let db = JSON.parse(localStorage.getItem('police_db_baddie')) || { resumos: [], flashcards: [], mcq: [], disc: [] };
-    
+    let userStats = JSON.parse(localStorage.getItem('baddie_stats')) || { xp: 0, streak: 1 };
+    let db = JSON.parse(localStorage.getItem('baddie_multidb')) || {
+      medio: { resumos: [], flashcards: [], mcq: [], disc: [] },
+      ti: { resumos: [], flashcards: [], mcq: [], disc: [] },
+      superior: { resumos: [], flashcards: [], mcq: [], disc: [] },
+      orgaos: { resumos: [], flashcards: [], mcq: [], disc: [] }
+    };
+
+    let currentArea = 'medio';
+    let currentTool = 'resumos';
     let idx = { resumos: 0, flashcards: 0, mcq: 0, disc: 0 };
+
+    const areaLabels = {
+      medio: '📚 NÍVEL MÉDIO (Português, RLM...)',
+      ti: '💻 TECNOLOGIA & TI',
+      superior: '⚖️ NÍVEL SUPERIOR / JURÍDICO',
+      orgaos: '🏛️ LEGISLAÇÃO ESPECÍFICA / ÓRGÃOS'
+    };
 
     function getRank(xp) {
       if (xp < 100) return 'Recruta Baddie';
-      if (xp < 300) return 'Estagiária do Crime';
-      if (xp < 600) return 'Dra. Investigadora (PC-AP)';
+      if (xp < 300) return 'Estagiária VIP';
+      if (xp < 600) return 'Dra. Investigadora';
       if (xp < 1000) return 'Dama da PRF/PF';
       return 'Delegada Boss Bitch';
     }
@@ -274,61 +346,110 @@
       document.getElementById('xp-count').innerText = userStats.xp;
       document.getElementById('streak-count').innerText = userStats.streak;
       document.getElementById('user-rank').innerText = getRank(userStats.xp);
-      localStorage.setItem('police_stats_baddie', JSON.stringify(userStats));
+      localStorage.setItem('baddie_stats', JSON.stringify(userStats));
     }
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + tabId).classList.add('active');
+    function setArea(areaKey) {
+      currentArea = areaKey;
+      document.querySelectorAll('.area-btn').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
+
+      if(areaKey === 'import') {
+        document.getElementById('area-title-display').innerText = "📍 ÁREA ATUAL: ALIMENTAÇÃO DE DADOS";
+        document.getElementById('tool-nav-bar').style.display = 'none';
+        showTab('import');
+      } else {
+        document.getElementById('tool-nav-bar').style.display = 'flex';
+        document.getElementById('area-title-display').innerText = "📍 ÁREA ATUAL: " + areaLabels[areaKey];
+        setTool(currentTool);
+      }
+    }
+
+    function setTool(toolKey) {
+      currentTool = toolKey;
+      document.querySelectorAll('.tool-btn').forEach(btn => btn.classList.remove('active'));
+      let activeBtn = Array.from(document.querySelectorAll('.tool-btn')).find(b => b.getAttribute('onclick').includes(toolKey));
+      if(activeBtn) activeBtn.classList.add('active');
+      showTab(toolKey);
+      renderCurrentTool();
+    }
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    function renderCurrentTool() {
+      if(currentTool === 'resumos') loadResumo();
+      if(currentTool === 'flashcards') loadCard();
+      if(currentTool === 'mcq') loadMCQ();
+      if(currentTool === 'disc') loadDisc();
     }
 
     /* RESUMOS */
     function loadResumo() {
-      if(db.resumos.length === 0) return;
-      let item = db.resumos[idx.resumos];
+      let list = db[currentArea]?.resumos || [];
+      if(!list.length) {
+        document.getElementById('resumo-titulo').innerText = "✨ Sem Resumos Aqui";
+        document.getElementById('resumo-materia').innerText = "Matéria: N/A";
+        document.getElementById('resumo-texto').innerText = "Nenhum resumo nesta área. Cadastre no menu Alimentar!";
+        return;
+      }
+      let item = list[idx.resumos % list.length];
       document.getElementById('resumo-titulo').innerText = "✨ " + item.t;
       document.getElementById('resumo-materia').innerText = "Matéria: " + item.m;
       document.getElementById('resumo-texto').innerText = item.txt;
       document.getElementById('feynman-input').value = "";
     }
+
     function saveFeynman() {
       if(document.getElementById('feynman-input').value.trim() !== ""){
-        userStats.xp += 10; updateStatsUI(); alert("Arrasou! Explicação salva com sucesso! +10 XP");
+        userStats.xp += 10; updateStatsUI(); alert("Arrasou! Explicação salva! +10 XP");
       }
     }
-    function nextResumo() { if(db.resumos.length) { idx.resumos = (idx.resumos + 1) % db.resumos.length; loadResumo(); } }
 
     /* FLASHCARDS */
     function flipCard() {
-      if (!db.flashcards.length) return;
+      let list = db[currentArea]?.flashcards || [];
+      if (!list.length) return;
       let card = document.getElementById('current-card');
       card.classList.toggle('flipped');
       document.getElementById('card-btns').style.display = card.classList.contains('flipped') ? 'flex' : 'none';
     }
+
     function loadCard() {
       document.getElementById('current-card').classList.remove('flipped');
       document.getElementById('card-btns').style.display = 'none';
-      if (!db.flashcards.length) return;
-      let item = db.flashcards[idx.flashcards];
+      let list = db[currentArea]?.flashcards || [];
+      if (!list.length) {
+        document.getElementById('card-question').innerText = "Nenhum flashcard nesta área.";
+        document.getElementById('card-answer').innerText = "Adicione mais na aba Alimentar!";
+        return;
+      }
+      let item = list[idx.flashcards % list.length];
       document.getElementById('card-question').innerText = item.q;
       document.getElementById('card-answer').innerText = item.a;
-      document.getElementById('card-tag').innerText = "💋 MATÉRIA: " + item.m;
     }
+
     function answerCard(win) {
       userStats.xp += win ? 15 : 5; updateStatsUI();
-      idx.flashcards = (idx.flashcards + 1) % db.flashcards.length; loadCard();
+      let list = db[currentArea]?.flashcards || [];
+      if(list.length) idx.flashcards = (idx.flashcards + 1) % list.length;
+      loadCard();
     }
 
     /* MCQ */
     function loadMCQ() {
-      if (!db.mcq.length) return;
-      let item = db.mcq[idx.mcq];
-      document.getElementById('mcq-question').innerText = item.q;
+      let list = db[currentArea]?.mcq || [];
       document.getElementById('mcq-comment').style.display = 'none';
       let container = document.getElementById('mcq-options');
       container.innerHTML = "";
+      if (!list.length) {
+        document.getElementById('mcq-question').innerText = "Nenhuma questão nesta área.";
+        return;
+      }
+      let item = list[idx.mcq % list.length];
+      document.getElementById('mcq-question').innerText = item.q;
       ['a','b','c','d'].forEach(opt => {
         if(item[opt]){
           let btn = document.createElement('button');
@@ -339,6 +460,7 @@
         }
       });
     }
+
     function checkMCQ(chosen, correct, comment, btn) {
       let btns = document.querySelectorAll('.option-btn');
       btns.forEach(b => b.disabled = true);
@@ -351,30 +473,38 @@
       cBox.innerText = "Gabarito (" + correct.toUpperCase() + "): " + comment;
       cBox.style.display = 'block';
     }
-    function nextMCQ() { if(db.mcq.length) { idx.mcq = (idx.mcq + 1) % db.mcq.length; loadMCQ(); } }
 
     /* DISCURSIVAS */
     function loadDisc() {
-      if (!db.disc.length) return;
-      let item = db.disc[idx.disc];
-      document.getElementById('disc-question').innerText = item.q;
-      document.getElementById('disc-answer-text').innerText = item.a;
+      let list = db[currentArea]?.disc || [];
       document.getElementById('disc-espelho').style.display = 'none';
       document.getElementById('disc-user-ans').value = "";
+      if (!list.length) {
+        document.getElementById('disc-question').innerText = "Nenhuma questão discursiva nesta área.";
+        document.getElementById('disc-answer-text').innerText = "";
+        return;
+      }
+      let item = list[idx.disc % list.length];
+      document.getElementById('disc-question').innerText = item.q;
+      document.getElementById('disc-answer-text').innerText = item.a;
     }
+
     function toggleEspelho() {
       let e = document.getElementById('disc-espelho');
       e.style.display = e.style.display === 'none' ? 'block' : 'none';
     }
-    function nextDisc() {
-      if(db.disc.length){
-        userStats.xp += 20; updateStatsUI();
-        idx.disc = (idx.disc + 1) % db.disc.length; loadDisc();
+
+    function nextItem(tool) {
+      let list = db[currentArea]?.[tool] || [];
+      if(list.length) {
+        idx[tool] = (idx[tool] + 1) % list.length;
+        renderCurrentTool();
       }
     }
 
-    /* IMPORTAÇÃO */
+    /* INJEÇÃO DE DADOS */
     function importData() {
+      let area = document.getElementById('import-area').value;
       let type = document.getElementById('import-type').value;
       let text = document.getElementById('batch-input').value.trim();
       if(!text) return;
@@ -385,27 +515,24 @@
       lines.forEach(line => {
         let p = line.split('|');
         if (type === 'flashcards' && p.length >= 2) {
-          db.flashcards.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
+          db[area].flashcards.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
         } else if (type === 'resumos' && p.length >= 2) {
-          db.resumos.push({ t: p[0].trim(), txt: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
+          db[area].resumos.push({ t: p[0].trim(), txt: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
         } else if (type === 'mcq' && p.length >= 6) {
-          db.mcq.push({ q: p[0].trim(), a: p[1].trim(), b: p[2].trim(), c: p[3].trim(), d: p[4].trim(), correct: p[5].trim(), comment: p[6]?p[6].trim():"" }); count++;
+          db[area].mcq.push({ q: p[0].trim(), a: p[1].trim(), b: p[2].trim(), c: p[3].trim(), d: p[4].trim(), correct: p[5].trim(), comment: p[6]?p[6].trim():"" }); count++;
         } else if (type === 'disc' && p.length >= 2) {
-          db.disc.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
+          db[area].disc.push({ q: p[0].trim(), a: p[1].trim(), m: p[2] ? p[2].trim() : "Geral" }); count++;
         }
       });
 
-      localStorage.setItem('police_db_baddie', JSON.stringify(db));
+      localStorage.setItem('baddie_multidb', JSON.stringify(db));
       document.getElementById('batch-input').value = '';
-      alert(`${count} itens injetados com sucesso, diva!`);
-      initAll();
+      alert(`${count} itens injetados com sucesso na área de ${areaLabels[area]}!`);
+      setArea(area);
     }
 
-    function initAll() {
-      updateStatsUI(); loadResumo(); loadCard(); loadMCQ(); loadDisc();
-    }
-    
-    initAll();
+    updateStatsUI();
+    renderCurrentTool();
   </script>
 </body>
 </html>
